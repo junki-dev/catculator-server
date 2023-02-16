@@ -3,12 +3,12 @@ os: linux # 실행 OS
 
 files: # 배포의 설치 이벤트 동안 인스턴스에 설치할 파일 정보
   - source: /
-    destination: /home/ec2-user/catculator
+    destination: /home/ec2-user/catculator-server
 
 file_exists_behavior: OVERWRITE # 이전 버전 파일 처분 방법
 
 permissions: # files section 파일 권한 설정
-  - object: /home/ec2-user/catculator
+  - object: /home/ec2-user/catculator-server
     owner: ec2-user
     group: ec2-user
 
