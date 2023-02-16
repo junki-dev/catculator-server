@@ -2,7 +2,7 @@ name: catculator test coverage
 
 on:
   pull_request:
-    branches: ["main", "develop", "be/**"]
+    branches: ['main', 'develop', 'be/**']
 
 jobs:
   coverage:
@@ -17,7 +17,7 @@ jobs:
         node-version: [18.12.1]
 
     env:
-      ACCESS_TOKEN: "${{ secrets.GH_ACCESS_TOKEN }}"
+      ACCESS_TOKEN: '${{ secrets.GH_ACCESS_TOKEN }}'
 
     steps:
       - uses: actions/checkout@master
@@ -36,7 +36,6 @@ jobs:
           envkey_PORT: ${{ secrets.PORT }}
           envkey_LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
           envkey_ENV: ${{ secrets.ENV }}
-          directory: backend
           file_name: .env
 
       - name: Run tests
