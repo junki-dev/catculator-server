@@ -2,7 +2,7 @@ name: catculator test coverage
 
 on:
   pull_request:
-    branches: ["main", "develop", "be/**"]
+    branches: ['main', 'develop', 'be/**']
 
 jobs:
   coverage:
@@ -17,7 +17,7 @@ jobs:
         node-version: [18.12.1]
 
     env:
-      ACCESS_TOKEN: "${{ secrets.GH_ACCESS_TOKEN }}"
+      ACCESS_TOKEN: '${{ secrets.GH_ACCESS_TOKEN }}'
 
     steps:
       - uses: actions/checkout@master
@@ -36,24 +36,17 @@ jobs:
           envkey_PORT: ${{ secrets.PORT }}
           envkey_LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
           envkey_ENV: ${{ secrets.ENV }}
-          directory: backend
           file_name: .env
 
       - name: Run tests
-        run: |
-          cd backend
-          yarn test:sum
+        run: yarn test:sum
 
       - name: Make badges
-        run: |
-          cd backend
-          yarn test:bad
+        run: yarn test:bad
 
       - name: Check if there is any new translations
         id: verify_diff
-        run: |
-          cd backend
-          git diff --quiet README.md || echo "::set-output name=new_translations_exist::true"
+        run: git diff --quiet README.md || echo "::set-output name=new_translations_exist::true"
 
       - name: Commit files
         if: steps.verify_diff.outputs.new_translations_exist == 'true'
