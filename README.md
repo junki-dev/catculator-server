@@ -10,6 +10,16 @@ catculator는 각 생애주기, 몸무게, 현재 상태(중성화 여부, 임�
 As-Is Repository: https://github.com/junki-dev/catculator </br>
 Frontend Repository: https://github.com/junki-dev/catculator-web
 
+</br>
+
+## Infra Structure
+
+<img width="100%" src="https://user-images.githubusercontent.com/66932794/219527480-0ce9b9b1-0d9f-40b1-96ae-63795ef70299.png"/>
+
+<br/>
+
+## Coverage
+
 | Statements                                                                                      | Branches                                                                                 | Functions                                                                                  | Lines                                                                                 |
 | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/statements-87.44%25-yellow.svg?style=flat&logo=jest) | ![Branches](https://img.shields.io/badge/branches-58.33%25-red.svg?style=flat&logo=jest) | ![Functions](https://img.shields.io/badge/functions-65.21%25-red.svg?style=flat&logo=jest) | ![Lines](https://img.shields.io/badge/lines-88.37%25-yellow.svg?style=flat&logo=jest) |
