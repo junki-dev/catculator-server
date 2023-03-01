@@ -13,7 +13,7 @@ class FeedRepository {
   }
 
   getRepository() {
-    if (this.#repository) return this.#repository;
+    if (this.#repository) {return this.#repository;}
 
     return this.#database.getRepository(Feed);
   }

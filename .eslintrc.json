@@ -1,27 +1,43 @@
 {
+  // monorepo 사용을 고려한 root 옵션 지정
+  "root": true,
+
+  // 실행 환경 설정
   "env": {
-    "browser": false,
-    "es2021": true
+    "es6": true,
+    "node": true,
+    "jest": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "plugin:import/recommended"
-  ],
+
+  // typescript parser 설정(eslint는 기본적으로 JS만 이해할 수 있다.)
   "parser": "@typescript-eslint/parser",
+
+  // ECMA 버전 지정(14_2022)
   "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "ecmaVersion": 14
   },
-  "plugins": ["@typescript-eslint", "unused-imports"],
+
+  // lint 플러그인 설정
+  "plugins": ["@typescript-eslint", "import", "unused-imports"],
+
+  // 외부 lint 설정 적용
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+
+  // 세부 rule 지정
   "rules": {
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "no-unused-vars": "off",
+    "no-implicit-coercion": "error",
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": ["TODO", "FIXME", "XXX", "BUG"],
+        "location": "anywhere"
+      }
+    ],
+
+    "curly": ["error", "all"],
+    "no-console": "warn",
+
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
@@ -41,6 +57,40 @@
           "caseInsensitive": true
         },
         "newlines-between": "always"
+      }
+    ],
+
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+    "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      { "format": ["camelCase", "UPPER_CASE", "PascalCase"], "selector": "variable", "leadingUnderscore": "allow" },
+      { "format": ["camelCase", "PascalCase"], "selector": "function" },
+      { "format": ["PascalCase"], "selector": "interface" },
+      { "format": ["PascalCase"], "selector": "typeAlias" }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
+    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": [
+          "public-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "private-instance-field",
+          "public-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "private-instance-method"
+        ]
       }
     ]
   },

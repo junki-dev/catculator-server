@@ -21,7 +21,7 @@ const responseLogger = (req: Request, res: Response, next: NextFunction) => {
   res.on('close', () => {
     logger.debug(
       `[${req.method}]${req.url} statusCode=${res.statusCode} ${
-        !!reqBody && Object.keys(reqBody).length !== 0 ? 'body=' + JSON.stringify(reqBody) : ''
+        Boolean(reqBody) && Object.keys(reqBody).length !== 0 ? 'body=' + JSON.stringify(reqBody) : ''
       }`,
     );
   });
