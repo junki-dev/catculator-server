@@ -15,7 +15,6 @@ abstract class DTO {
       if (err.constraints) {
         message = Object.values(err.constraints)[0];
       } else if (err.children && err.children[0].constraints) {
-        console.log(Object.values(err.children[0].constraints));
         message = Object.values(err.children[0].constraints)[0];
       }
 

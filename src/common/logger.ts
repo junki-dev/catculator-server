@@ -1,6 +1,6 @@
 import { getConfig } from '@config/index';
 import { IConfig } from '@config/interface';
-import { format, createLogger, transports } from 'winston';
+import winston, { format, createLogger, transports } from 'winston';
 
 const {
   app: { logLevel },
@@ -12,7 +12,7 @@ export interface ILogger {
 }
 
 export class Logger {
-  static getLogger(flag: ILogger): any {
+  static getLogger(flag: ILogger): winston.Logger {
     const { combine, timestamp, printf } = format;
 
     // Define log format

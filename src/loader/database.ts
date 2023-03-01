@@ -1,8 +1,7 @@
 import { getConfig } from '@config/index';
 import { IConfig } from '@config/interface';
-
-import { Logger } from '@src/common';
 import { Feed } from '@feed/model/feed.entity';
+import { Logger } from '@src/common';
 import { DataSource } from 'typeorm';
 
 const {
@@ -27,7 +26,9 @@ export class Database {
   }
 
   static init() {
-    if (!this.#datasource) this.generate();
+    if (!this.#datasource) {
+      this.generate();
+    }
 
     this.#datasource
       .initialize()
@@ -40,7 +41,9 @@ export class Database {
   }
 
   static getDatasource() {
-    if (!this.#datasource) this.generate();
+    if (!this.#datasource) {
+      this.generate();
+    }
 
     return this.#datasource;
   }
@@ -49,7 +52,7 @@ export class Database {
     this.#datasource
       .destroy()
       .then(() => {
-        logger.index('Data Source has been destroyed.');
+        logger.info('Data Source has been destroyed.');
       })
       .catch((err) => {
         throw `failed to data source initialized. error=${err}`;
